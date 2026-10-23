@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "Die Änderung würde zu viele Befehle erzeugen.",
   "clipTime.badCommands": "Ein Befehl endet vor seinem Start.",
   "clipTime.unavailable": "Dieses Objekt ist nicht mehr verfügbar.",
-  "clipTime.locked": "Zuerst alle Mitglieder entsperren."
+  "clipTime.locked": "Zuerst alle Mitglieder entsperren.",
+  "update.missingAsset": "In Release {0} fehlt die Update-Datei: {1}.",
+  "update.duplicateAsset": "Release {0} enthält mehrere Update-Dateien namens {1}."
 }

@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "This change would create too many commands.",
   "clipTime.badCommands": "A command has an end before its start.",
   "clipTime.unavailable": "This clip is no longer available.",
-  "clipTime.locked": "Unlock all members before changing this clip."
+  "clipTime.locked": "Unlock all members before changing this clip.",
+  "update.missingAsset": "Release {0} is missing the update attachment: {1}.",
+  "update.duplicateAsset": "Release {0} contains duplicate update attachments named {1}."
 }

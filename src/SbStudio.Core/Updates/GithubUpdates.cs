@@ -36,7 +36,13 @@ public sealed class GithubUpdates(HttpClient http)
         if (EligibleVersion(root, ParseVersion(currentVersion)) == null) return null;
         string version = root.GetProperty("tag_name").GetString() ?? "";
         var assets = root.GetProperty("assets").EnumerateArray().ToArray();
-        JsonElement Find(string name) => assets.Single(a => a.GetProperty("name").GetString() == name);
+        JsonElement Find(string name)
+        {
+            var matches = assets.Where(a => a.GetProperty("name").GetString() == name).ToArray();
+            if (matches.Length == 0) throw new InvalidDataException(L.T("update.missingAsset", version, name));
+            if (matches.Length > 1) throw new InvalidDataException(L.T("update.duplicateAsset", version, name));
+            return matches[0];
+        }
         string assetName = $"OsuStoryboardStudio-{version.TrimStart('v')}-win-x64.zip";
         if (!assets.Any(a => a.GetProperty("name").GetString() == assetName)) assetName = AssetName;
         var zip = Find(assetName);

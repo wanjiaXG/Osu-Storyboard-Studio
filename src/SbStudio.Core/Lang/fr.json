@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "Cette modification créerait trop de commandes.",
   "clipTime.badCommands": "Une commande se termine avant son début.",
   "clipTime.unavailable": "Cet objet n’est plus disponible.",
-  "clipTime.locked": "Déverrouillez tous les membres avant de continuer."
+  "clipTime.locked": "Déverrouillez tous les membres avant de continuer.",
+  "update.missingAsset": "Le fichier de mise à jour {1} manque dans la version {0}.",
+  "update.duplicateAsset": "La version {0} contient plusieurs fichiers de mise à jour nommés {1}."
 }

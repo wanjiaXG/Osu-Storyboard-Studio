@@ -1612,5 +1612,7 @@
   "clipTime.tooLarge": "此次變換會產生過多指令。",
   "clipTime.badCommands": "存在結束時間早於開始時間的指令。",
   "clipTime.unavailable": "此物件已無法使用。",
-  "clipTime.locked": "請先解鎖此物件中的全部成員。"
+  "clipTime.locked": "請先解鎖此物件中的全部成員。",
+  "update.missingAsset": "發佈版本 {0} 缺少更新附件：{1}。",
+  "update.duplicateAsset": "發佈版本 {0} 中存在重複的更新附件：{1}。"
 }

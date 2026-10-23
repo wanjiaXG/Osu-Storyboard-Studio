@@ -1612,5 +1612,7 @@
   "clipTime.tooLarge": "変換でコマンドが多くなりすぎます。",
   "clipTime.badCommands": "開始より前に終了するコマンドがあります。",
   "clipTime.unavailable": "このオブジェクトは利用できません。",
-  "clipTime.locked": "すべてのメンバーのロックを解除してください。"
+  "clipTime.locked": "すべてのメンバーのロックを解除してください。",
+  "update.missingAsset": "リリース {0} に更新ファイル {1} がありません。",
+  "update.duplicateAsset": "リリース {0} に同じ名前の更新ファイル {1} が複数あります。"
 }

@@ -1612,5 +1612,7 @@
   "clipTime.tooLarge": "การเปลี่ยนแปลงนี้จะสร้างคำสั่งมากเกินไป",
   "clipTime.badCommands": "มีคำสั่งที่สิ้นสุดก่อนเริ่ม",
   "clipTime.unavailable": "ไม่พบวัตถุนี้แล้ว",
-  "clipTime.locked": "ปลดล็อกสมาชิกทั้งหมดก่อน"
+  "clipTime.locked": "ปลดล็อกสมาชิกทั้งหมดก่อน",
+  "update.missingAsset": "รุ่น {0} ไม่มีไฟล์อัปเดต: {1}",
+  "update.duplicateAsset": "รุ่น {0} มีไฟล์อัปเดตชื่อ {1} ซ้ำกัน"
 }

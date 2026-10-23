@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "Perubahan ini akan membuat terlalu banyak perintah.",
   "clipTime.badCommands": "Ada perintah yang berakhir sebelum mulai.",
   "clipTime.unavailable": "Objek ini tidak lagi tersedia.",
-  "clipTime.locked": "Buka kunci semua anggota terlebih dahulu."
+  "clipTime.locked": "Buka kunci semua anggota terlebih dahulu.",
+  "update.missingAsset": "Rilis {0} tidak memiliki lampiran pembaruan: {1}.",
+  "update.duplicateAsset": "Rilis {0} memiliki lampiran pembaruan duplikat bernama {1}."
 }

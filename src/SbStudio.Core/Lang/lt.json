@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "Šis pakeitimas sukurtų per daug komandų.",
   "clipTime.badCommands": "Komanda baigiasi prieš savo pradžią.",
   "clipTime.unavailable": "Šis objektas nebepasiekiamas.",
-  "clipTime.locked": "Pirmiausia atrakinkite visus narius."
+  "clipTime.locked": "Pirmiausia atrakinkite visus narius.",
+  "update.missingAsset": "Laidoje {0} trūksta atnaujinimo failo: {1}.",
+  "update.duplicateAsset": "Laidoje {0} yra keli atnaujinimo failai pavadinimu {1}."
 }

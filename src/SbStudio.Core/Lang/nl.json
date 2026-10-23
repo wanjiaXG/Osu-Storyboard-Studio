@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "Deze wijziging zou te veel opdrachten maken.",
   "clipTime.badCommands": "Een opdracht eindigt voor het begin.",
   "clipTime.unavailable": "Dit object is niet meer beschikbaar.",
-  "clipTime.locked": "Ontgrendel eerst alle leden."
+  "clipTime.locked": "Ontgrendel eerst alle leden.",
+  "update.missingAsset": "Updatebestand {1} ontbreekt in release {0}.",
+  "update.duplicateAsset": "Release {0} bevat meerdere updatebestanden met de naam {1}."
 }

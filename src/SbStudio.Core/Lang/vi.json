@@ -1612,5 +1612,7 @@
   "clipTime.tooLarge": "Thay đổi này sẽ tạo quá nhiều lệnh.",
   "clipTime.badCommands": "Có lệnh kết thúc trước khi bắt đầu.",
   "clipTime.unavailable": "Đối tượng này không còn khả dụng.",
-  "clipTime.locked": "Hãy mở khóa tất cả thành viên trước."
+  "clipTime.locked": "Hãy mở khóa tất cả thành viên trước.",
+  "update.missingAsset": "Bản phát hành {0} thiếu tệp cập nhật: {1}.",
+  "update.duplicateAsset": "Bản phát hành {0} có nhiều tệp cập nhật trùng tên {1}."
 }

@@ -1611,5 +1611,7 @@
   "clipTime.tooLarge": "A alteração criaria comandos demais.",
   "clipTime.badCommands": "Um comando termina antes do início.",
   "clipTime.unavailable": "Este objeto não está mais disponível.",
-  "clipTime.locked": "Desbloqueie todos os membros antes de continuar."
+  "clipTime.locked": "Desbloqueie todos os membros antes de continuar.",
+  "update.missingAsset": "A versão {0} não contém o arquivo de atualização: {1}.",
+  "update.duplicateAsset": "A versão {0} contém arquivos de atualização duplicados: {1}."
 }

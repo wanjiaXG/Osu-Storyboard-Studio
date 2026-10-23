@@ -1612,5 +1612,7 @@
   "clipTime.tooLarge": "변환 시 명령이 너무 많이 생성됩니다.",
   "clipTime.badCommands": "시작 전에 종료되는 명령이 있습니다.",
   "clipTime.unavailable": "이 개체를 사용할 수 없습니다.",
-  "clipTime.locked": "먼저 모든 구성원의 잠금을 해제하세요."
+  "clipTime.locked": "먼저 모든 구성원의 잠금을 해제하세요.",
+  "update.missingAsset": "릴리스 {0}에 업데이트 첨부 파일이 없습니다: {1}.",
+  "update.duplicateAsset": "릴리스 {0}에 이름이 {1}인 업데이트 파일이 중복되어 있습니다."
 }
