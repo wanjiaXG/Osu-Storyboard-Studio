@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "effectId": "sbstudio.background-push",
+  "schemaVersion": 1,
+  "packageVersion": "1.0.0",
+  "parameters": {
+    "fromScale": 1,
+    "toScale": 1.05,
+    "ease": "SineInOut"
+  },
+  "assets": {}
+}

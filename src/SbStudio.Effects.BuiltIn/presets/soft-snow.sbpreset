@@ -1,0 +1,14 @@
+{
+  "formatVersion": 1,
+  "effectId": "sbstudio.snow",
+  "schemaVersion": 1,
+  "packageVersion": "1.0.0",
+  "parameters": {
+    "count": 80,
+    "speed": 45,
+    "sizeMin": 0.08,
+    "sizeMax": 0.22,
+    "seed": 7
+  },
+  "assets": {}
+}

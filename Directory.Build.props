@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <!-- Change this one value before publishing a release; use the same v-prefixed GitHub tag. -->
+    <Version>0.3.0-beta.2</Version>
+    <InformationalVersion>$(Version)</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+</Project>

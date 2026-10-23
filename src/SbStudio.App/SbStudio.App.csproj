@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>OsuStoryboardStudio</AssemblyName>
+    <RootNamespace>SbStudio.App</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ppy.ManagedBass" Version="2022.1216.0" />
+    <PackageReference Include="ppy.ManagedBass.Fx" Version="2022.1216.0" />
+    <!-- Same pinned BASS binary as osu!framework; exclude its unrelated native libraries. -->
+    <PackageReference Include="ppy.osu.Framework.NativeLibs" Version="2025.806.0-nativelibs" GeneratePathProperty="true" ExcludeAssets="all" />
+    <PackageReference Include="Silk.NET.Windowing" Version="2.22.0" />
+    <PackageReference Include="Silk.NET.Input" Version="2.22.0" />
+    <PackageReference Include="Silk.NET.OpenGL" Version="2.22.0" />
+    <PackageReference Include="Silk.NET.GLFW" Version="2.22.0" />
+    <PackageReference Include="ImGui.NET" Version="1.90.8.1" />
+    <PackageReference Include="StbImageSharp" Version="2.30.15" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" />
+    <!-- Decoding of beatmap videos: the bindings, and FFmpeg itself (a GPL build) for Windows. -->
+    <PackageReference Include="FFmpeg.AutoGen" Version="7.1.1" />
+    <PackageReference Include="Sdcb.FFmpeg.runtime.windows-x64" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="$(Pkgppy_osu_Framework_NativeLibs)\runtimes\win-x64\native\bass.dll" Link="bass.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="$(Pkgppy_osu_Framework_NativeLibs)\runtimes\win-x64\native\bass_fx.dll" Link="bass_fx.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <ProjectReference Include="..\SbStudio.Core\SbStudio.Core.csproj" />
+    <ProjectReference Include="..\SbStudio.Resources\SbStudio.Resources.csproj" />
+    <ProjectReference Include="..\SbStudio.Effects.Host\SbStudio.Effects.Host.csproj" ReferenceOutputAssembly="false" Private="false" PrivateAssets="all" />
+    <ProjectReference Include="..\SbStudio.Effects.BuiltIn\SbStudio.Effects.BuiltIn.csproj" ReferenceOutputAssembly="false" Private="false" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The window's own icon (title bar, taskbar); the exe's icon is ApplicationIcon above. -->
+    <EmbeddedResource Include="Assets\icon-*.png" LogicalName="AppIcon/%(Filename)%(Extension)" WithCulture="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The built-in languages also sit next to the program, as templates for the ones a user adds there. -->
+    <Content Include="..\SbStudio.Core\Lang\*.json" Link="lang\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\SbStudio.Effects.Sdk\README.md" Link="effects\authoring.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="PrepareEffectRuntime" AfterTargets="ResolveProjectReferences" BeforeTargets="PrepareResources" Condition="'$(DesignTimeBuild)' != 'true'">
+    <MSBuild Projects="..\SbStudio.Effects.Host\SbStudio.Effects.Host.csproj" Targets="GetTargetPath" Properties="Configuration=$(Configuration)">
+      <Output TaskParameter="TargetOutputs" ItemName="EffectTargets" />
+    </MSBuild>
+    <MSBuild Projects="..\SbStudio.Effects.BuiltIn\SbStudio.Effects.BuiltIn.csproj" Targets="GetTargetPath" Properties="Configuration=$(Configuration)" RemoveProperties="RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="EffectTargets" />
+    </MSBuild>
+    <PropertyGroup>
+      <EffectHostPath>@(EffectTargets->WithMetadataValue('MSBuildSourceProjectFile','SbStudio.Effects.Host.csproj'))</EffectHostPath>
+      <EffectBuiltInPath>@(EffectTargets->WithMetadataValue('MSBuildSourceProjectFile','SbStudio.Effects.BuiltIn.csproj'))</EffectBuiltInPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <EffectHostAssembly Include="@(EffectTargets)" Condition="'%(Filename)' == 'SbStudio.Effects.Host'" />
+      <EffectBuiltInAssembly Include="@(EffectTargets)" Condition="'%(Filename)' == 'SbStudio.Effects.BuiltIn'" />
+    </ItemGroup>
+    <PropertyGroup>
+      <EffectHostDir>@(EffectHostAssembly->'%(RootDir)%(Directory)')</EffectHostDir>
+      <EffectBuiltInDir>@(EffectBuiltInAssembly->'%(RootDir)%(Directory)')</EffectBuiltInDir>
+      <EffectPackageWork>$(IntermediateOutputPath)effects-package</EffectPackageWork>
+    </PropertyGroup>
+    <Exec Command="dotnet &quot;@(EffectHostAssembly)&quot; --prepare-package &quot;$(EffectBuiltInDir).&quot; &quot;$(EffectPackageWork)&quot;" />
+    <ItemGroup>
+      <EmbeddedResource Include="$(EffectPackageWork)\package\effect.json" LogicalName="Effects.BuiltIn.Manifest" />
+      <EffectHostFiles Include="$(EffectHostDir)**\*" Exclude="$(EffectHostDir)**\*.pdb" />
+      <EffectBuiltInFiles Include="$(EffectPackageWork)\package\**\*" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="@(EffectHostFiles)" Link="effects\host\%(EffectHostFiles.RecursiveDir)%(EffectHostFiles.Filename)%(EffectHostFiles.Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+      <Content Include="@(EffectBuiltInFiles)" Link="effects\builtin\%(EffectBuiltInFiles.RecursiveDir)%(EffectBuiltInFiles.Filename)%(EffectBuiltInFiles.Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+</Project>

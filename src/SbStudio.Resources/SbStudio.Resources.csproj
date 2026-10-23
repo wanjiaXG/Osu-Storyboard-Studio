@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Keep editable originals in this project; publish artwork only inside this assembly. -->
+    <EmbeddedResource Include="Assets\DefaultSkin\*" LogicalName="DefaultSkin/%(Filename)%(Extension)" WithCulture="false" />
+    <EmbeddedResource Include="Assets\Argon\*" LogicalName="Argon/%(Filename)%(Extension)" WithCulture="false" />
+    <Content Include="Assets\Skins\README.txt" Link="Skins\README.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

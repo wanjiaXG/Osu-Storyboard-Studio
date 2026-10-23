@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "effectId": "sbstudio.beat-flash",
+  "schemaVersion": 1,
+  "packageVersion": "1.0.0",
+  "parameters": {
+    "strength": 0.15,
+    "subdivision": 1,
+    "flash": 160
+  },
+  "assets": {}
+}

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SbStudio.Effects.Sdk\SbStudio.Effects.Sdk.csproj" />
+    <!-- Every language file in Lang is built in; a new language is one more file here. -->
+    <EmbeddedResource Include="Lang\*.json" LogicalName="Lang/%(Filename)%(Extension)" WithCulture="false" />
+  </ItemGroup>
+
+</Project>

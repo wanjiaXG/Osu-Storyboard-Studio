@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>14.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SbStudio.Effects.Sdk\SbStudio.Effects.Sdk.csproj" />
+    <Content Include="assets\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="presets\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="effect.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="PrepareEffectAssembly" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TargetDir)lib" />
+  </Target>
+</Project>

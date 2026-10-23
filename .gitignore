@@ -1,0 +1,19 @@
+# Only the program's source, project notices and the files needed to build and run it are published.
+# Everything else in the root stays on this computer; a new root file is private until it is listed here.
+/*
+!/.gitignore
+!/src/
+!/OsuStoryboardStudio.sln
+!/Directory.Build.props
+!/global.json
+!/NuGet.Config
+!/README.md
+!/README.zh-CN.md
+!/run.bat
+
+# Build output and editor state inside the published folders.
+bin/
+obj/
+publish/
+.vs/
+*.user
